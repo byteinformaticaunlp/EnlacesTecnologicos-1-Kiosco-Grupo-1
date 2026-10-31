@@ -23,6 +23,6 @@ public class Producto {
     private double precio;
     private String Categoria;
     private String Marca;
-    private Provedor provedor;
+    private Proveedor proveedor;
 
 }
