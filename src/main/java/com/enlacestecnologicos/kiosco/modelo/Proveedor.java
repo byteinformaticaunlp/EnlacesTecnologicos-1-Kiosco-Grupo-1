@@ -22,5 +22,8 @@ public class Proveedor {
     private String nombre;
     private String direccion;
     private String telefono;
+
+    @OneToMany
+    @JoinColumn(name="producto_id")
     private List<Producto> productos;
 }

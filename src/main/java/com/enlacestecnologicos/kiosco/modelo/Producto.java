@@ -17,7 +17,7 @@ public class Producto {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-    private String codigo_de_barras;
+    private String codigoDeBarra;
     private String nombre;
     private double costo;
     private int stock;
@@ -32,7 +32,7 @@ public class Producto {
     @JoinColumn(name = "marca_id")
     private Marca marca;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "proveedor_id")
     private Proveedor proveedor;
 

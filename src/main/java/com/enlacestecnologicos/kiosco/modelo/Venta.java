@@ -26,7 +26,7 @@ public class Venta {
     private Usuario usuario; // Este lo haces para saber quien realizo la venta, podemos usar la caja
                              // directamente
     @DateTimeFormat
-    private String date;
+    private String fecha;
 
     private int caja; // con este calcular por turno cuanto va
     private double total;
@@ -35,7 +35,7 @@ public class Venta {
     @JoinColumn(name = "metodo_de_pago_id")
     private MetodoDePago metodo;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="detalle_venta_id")
     private List<DetalleVenta> detalleVenta;
 }

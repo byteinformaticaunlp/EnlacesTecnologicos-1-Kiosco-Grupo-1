@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="tickets")
@@ -17,6 +18,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @DateTimeFormat
     private String fecha;
     private double total;
     private String hora;
