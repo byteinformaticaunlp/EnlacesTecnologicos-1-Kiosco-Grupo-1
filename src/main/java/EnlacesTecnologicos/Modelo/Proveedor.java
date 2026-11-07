@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-class Provedor {
+class Proveedor {
     @Id
     private int id;
     private String nombre;
