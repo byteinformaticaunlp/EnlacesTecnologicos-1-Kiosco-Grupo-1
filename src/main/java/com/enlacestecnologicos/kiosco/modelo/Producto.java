@@ -1,28 +1,39 @@
 package com.enlacestecnologicos.kiosco.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name="productos")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Producto {
     @Id
-    private int identificador;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private int id;
+
     private String codigo_de_barras;
     private String nombre;
     private double costo;
     private int stock;
     private int stockMinimo;
     private double precio;
-    private String Categoria;
-    private String Marca;
-    // private Proveedor proveedor;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "marca_id")
+    private Marca marca;
+
+    @OneToMany
+    @JoinColumn(name = "proveedor_id")
+    private Proveedor proveedor;
 
 }

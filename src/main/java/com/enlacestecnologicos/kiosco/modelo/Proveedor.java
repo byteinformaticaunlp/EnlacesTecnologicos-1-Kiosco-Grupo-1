@@ -1,24 +1,26 @@
 package com.enlacestecnologicos.kiosco.modelo;
 
-import java.util.LinkedList;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name="proveedores")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-class Proveedor {
+public class Proveedor {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String nombre;
     private String direccion;
     private String telefono;
-    private LinkedList<Producto> productos;
+    private List<Producto> productos;
 }
