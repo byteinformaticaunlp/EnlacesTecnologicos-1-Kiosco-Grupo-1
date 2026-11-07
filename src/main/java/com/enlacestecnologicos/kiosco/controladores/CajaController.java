@@ -1,4 +1,4 @@
-package EnlacesTecnologicos.Controladores;
+package com.enlacestecnologicos.kiosco.controladores;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

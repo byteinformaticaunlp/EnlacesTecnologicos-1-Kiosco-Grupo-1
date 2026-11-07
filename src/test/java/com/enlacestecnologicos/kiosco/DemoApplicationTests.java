@@ -1,4 +1,4 @@
-package EnlacesTecnologicos;
+package com.enlacestecnologicos.kiosco;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

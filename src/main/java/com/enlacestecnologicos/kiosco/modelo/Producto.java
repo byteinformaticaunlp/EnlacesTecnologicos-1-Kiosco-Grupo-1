@@ -1,4 +1,4 @@
-package EnlacesTecnologicos.Modelo;
+package com.enlacestecnologicos.kiosco.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -23,6 +23,6 @@ public class Producto {
     private double precio;
     private String Categoria;
     private String Marca;
-    private Proveedor proveedor;
+    // private Proveedor proveedor;
 
 }

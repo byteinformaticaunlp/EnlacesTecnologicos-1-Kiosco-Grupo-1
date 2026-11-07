@@ -1,4 +1,4 @@
-package EnlacesTecnologicos.Modelo;
+package com.enlacestecnologicos.kiosco.modelo;
 
 import java.util.LinkedList;
 

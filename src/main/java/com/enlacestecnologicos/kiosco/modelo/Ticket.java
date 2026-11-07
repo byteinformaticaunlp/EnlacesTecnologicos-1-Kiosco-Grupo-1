@@ -1,4 +1,4 @@
-package EnlacesTecnologicos.Modelo;
+package com.enlacestecnologicos.kiosco.modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,12 +1,10 @@
-package EnlacesTecnologicos.Controladores;
-
-import java.sql.Date;
+package com.enlacestecnologicos.kiosco.controladores;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import EnlacesTecnologicos.Modelo.Ventas;
+import com.enlacestecnologicos.kiosco.modelo.Ventas;
 
 @RestController
 @RequestMapping("/Ventas")
