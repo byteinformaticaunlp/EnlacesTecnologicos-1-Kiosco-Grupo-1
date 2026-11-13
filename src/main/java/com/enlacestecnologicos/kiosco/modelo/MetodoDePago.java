@@ -11,7 +11,6 @@ import lombok.Setter;
 @Table(name="metodo_de_pago")
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class MetodoDePago {
 
@@ -20,5 +19,9 @@ public class MetodoDePago {
     private int id;
 
     private String metodo;
+
+    public MetodoDePago(String metodo){
+        this.metodo = metodo;
+    }
 
 }

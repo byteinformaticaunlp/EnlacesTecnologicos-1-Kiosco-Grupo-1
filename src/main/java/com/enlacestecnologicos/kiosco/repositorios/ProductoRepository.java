@@ -25,10 +25,10 @@ public interface ProductoRepository extends JpaRepository<Producto,Long> {
 
     public List<Producto> findByStockLessThan(int stock);
 
-    @Query("SELECT * FROM productos WHERE stock <= stock_minimo")
+    @Query("SELECT p FROM Producto p WHERE p.stock <= p.stockMinimo")
     public List<Producto> findByStockMinimo();
 
-    public List<Producto> findByPrecionGreaterThan(double precio);
+    public List<Producto> findByPrecioGreaterThan(double precio);
 
     public List<Producto> findByPrecioLessThan(double precio);
 

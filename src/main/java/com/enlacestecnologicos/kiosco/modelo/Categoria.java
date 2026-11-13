@@ -11,7 +11,6 @@ import lombok.Setter;
 @Table(name="categorias")
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Categoria {
 
@@ -20,4 +19,10 @@ public class Categoria {
     private int id;
 
     private String nombre;
+
+
+    public Categoria(String nombre){
+        this.nombre = nombre;
+    }
+
 }

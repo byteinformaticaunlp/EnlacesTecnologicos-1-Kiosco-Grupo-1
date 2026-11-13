@@ -11,7 +11,6 @@ import lombok.Setter;
 @Table(name="marcas")
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Marca {
 
@@ -20,5 +19,9 @@ public class Marca {
     private int id;
 
     private String nombre;
+
+    public Marca(String nombre) {
+        this.nombre = nombre;
+    }
 
 }

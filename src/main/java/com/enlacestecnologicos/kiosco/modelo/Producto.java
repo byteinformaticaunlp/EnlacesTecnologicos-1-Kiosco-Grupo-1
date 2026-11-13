@@ -10,7 +10,6 @@ import lombok.Setter;
 @Table(name="productos")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Producto {
     @Id
@@ -36,4 +35,24 @@ public class Producto {
     @JoinColumn(name = "proveedor_id")
     private Proveedor proveedor;
 
+    public Producto(String codigoDeBarra, String nombre, double costo, int stock, int stockMinimo,String categoria,String marca) {
+        this.codigoDeBarra = codigoDeBarra;
+        this.nombre = nombre;
+        this.costo = costo;
+        this.stock = stock;
+        this.stockMinimo = stockMinimo;
+        this.categoria = new Categoria(categoria);
+        this.marca = new Marca(marca);
+    }
+
+    public Producto(String codigoDeBarra, String nombre, double costo, int stock, int stockMinimo,double precio,String categoria,String marca) {
+        this.codigoDeBarra = codigoDeBarra;
+        this.nombre = nombre;
+        this.costo = costo;
+        this.stock = stock;
+        this.stockMinimo = stockMinimo;
+        this.categoria = new Categoria(categoria);
+        this.marca = new Marca(marca);
+        this.precio = precio;
+    }
 }

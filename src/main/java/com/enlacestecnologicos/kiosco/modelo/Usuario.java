@@ -21,7 +21,18 @@ public class Usuario {
     private String nombre;
     private String password;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="rol_id")
     private Rol rol;
+
+    public Usuario(String nombre,String password) {
+        this.nombre = nombre;
+        this.password = password;
+    }
+
+    public Usuario(String nombre, String password,Rol rol) {
+        this.nombre = nombre;
+        this.password = password;
+        this.rol = rol;
+    }
 }

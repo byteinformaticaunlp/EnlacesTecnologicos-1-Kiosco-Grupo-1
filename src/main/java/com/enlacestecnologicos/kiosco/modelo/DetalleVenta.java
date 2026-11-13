@@ -7,14 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @Table(name="detalles_venta")
 @Setter
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class DetalleVenta {
 
     @Id
@@ -25,10 +24,30 @@ public class DetalleVenta {
 
     @OneToMany
     @JoinColumn(name="producto_id")
-    private List<Producto> producto;
+    private List<Producto> productos;
 
     @ManyToOne
     @JoinColumn(name="venta_id")
     private Venta venta;
+
+    public DetalleVenta(){
+        this.productos = new LinkedList<Producto>();
+    }
+
+    public DetalleVenta(List<Producto> productos) {
+        this.productos = new LinkedList<Producto>(productos);
+        this.cantidad = this.productos.size();
+    }
+
+    public DetalleVenta(List<Producto> productos,Venta venta) {
+        this.productos = new LinkedList<Producto>(productos);
+        this.cantidad = this.productos.size();
+        this.venta = venta;
+    }
+
+    public void agregarProducto(Producto producto) {
+        this.productos.add(producto);
+        this.cantidad += 1;
+    }
 
 }

@@ -11,7 +11,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="tickets")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Ticket {
     @Id
@@ -26,4 +25,12 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name="venta_id")
     private Venta venta;
+
+    public Ticket(String fecha,double total,String hora,Venta venta) {
+        this.fecha = fecha;
+        this.total= total;
+        this.hora = hora;
+        this.venta = venta;
+    }
+
 }

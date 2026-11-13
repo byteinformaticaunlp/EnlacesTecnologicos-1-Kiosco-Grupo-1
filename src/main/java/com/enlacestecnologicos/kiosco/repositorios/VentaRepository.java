@@ -17,7 +17,7 @@ public interface VentaRepository extends JpaRepository<Venta,Long> {
 
     public List<Venta> findByCaja(int caja);
 
-    public List<Venta> findByMetodoDePago(MetodoDePago metodo);
+    public List<Venta> findByMetodo(MetodoDePago metodo);
 
 
 }

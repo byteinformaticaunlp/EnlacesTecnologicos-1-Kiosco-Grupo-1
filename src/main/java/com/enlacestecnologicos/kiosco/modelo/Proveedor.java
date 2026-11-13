@@ -1,5 +1,6 @@
 package com.enlacestecnologicos.kiosco.modelo;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -12,7 +13,6 @@ import lombok.Setter;
 @Table(name="proveedores")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Proveedor {
     @Id
@@ -26,4 +26,15 @@ public class Proveedor {
     @OneToMany
     @JoinColumn(name="producto_id")
     private List<Producto> productos;
+
+    public Proveedor(String nombre, String direccion,String telefono,List<Producto> productos) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.productos = new LinkedList<Producto>(productos);
+    }
+
+    public void agregarProducto(Producto producto) {
+        this.productos.add(producto);
+    }
 }

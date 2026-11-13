@@ -1,5 +1,6 @@
 package com.enlacestecnologicos.kiosco.controladores;
 
+import com.enlacestecnologicos.kiosco.modelo.Producto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

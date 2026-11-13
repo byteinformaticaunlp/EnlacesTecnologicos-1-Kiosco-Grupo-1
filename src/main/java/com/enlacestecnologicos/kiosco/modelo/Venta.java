@@ -1,5 +1,6 @@
 package com.enlacestecnologicos.kiosco.modelo;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -38,4 +39,13 @@ public class Venta {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="detalle_venta_id")
     private List<DetalleVenta> detalleVenta;
+
+    public Venta(Usuario usuario,String fecha,int caja,double total,MetodoDePago metodo,List<DetalleVenta> detalles) {
+        this.usuario = usuario;
+        this.fecha = fecha;
+        this.caja = caja;
+        this.total = total;
+        this.metodo = metodo;
+        this.detalleVenta = new LinkedList<>(detalles);
+    }
 }

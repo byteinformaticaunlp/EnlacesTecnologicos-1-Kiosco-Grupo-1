@@ -11,7 +11,6 @@ import lombok.Setter;
 @Table(name="roles")
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Rol {
 
@@ -20,4 +19,8 @@ public class Rol {
     private int id;
 
     private String rol;
+
+    public Rol(String rol) {
+        this.rol = rol;
+    }
 }
