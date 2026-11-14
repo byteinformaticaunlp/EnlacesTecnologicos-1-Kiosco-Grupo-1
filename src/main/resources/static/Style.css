@@ -1,0 +1,317 @@
+/* Almacén la byteada · pantalla de ingreso
+   Sin fuentes ni recursos externos: funciona en la red local sin internet. */
+
+:root {
+    --negro: #050806;
+    --negro-2: #0b130e;
+    --panel: #0e1812;
+    --borde: #1f3d2b;
+    --verde: #22c55e;
+    --verde-claro: #4ade80;
+    --verde-oscuro: #15803d;
+    --texto: #e8f5ec;
+    --texto-suave: #8fb39b;
+    --error: #f87171;
+    --lado: clamp(46px, 7.2vh, 60px);
+    /* lado de cada tecla en rombo */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", sans-serif;
+    color: var(--texto);
+    background:
+        radial-gradient(ellipse 80% 55% at 50% -10%, rgba(34, 197, 94, .22), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(21, 128, 61, .18), transparent 70%),
+        var(--negro);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.escena {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+}
+
+/* ---------- Tarjeta ---------- */
+.tarjeta {
+    width: min(100%, 440px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: clamp(22px, 4vh, 36px) 28px;
+    background: linear-gradient(160deg, var(--panel), var(--negro-2));
+    border: 1px solid var(--borde);
+    border-radius: 28px;
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, .05), 0 24px 70px rgba(0, 0, 0, .6), 0 0 80px rgba(34, 197, 94, .10);
+}
+
+.cabecera {
+    text-align: center;
+}
+
+.titulo {
+    font-size: clamp(1.8rem, 5vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: .01em;
+    line-height: 1.1;
+}
+
+.titulo span {
+    background: linear-gradient(90deg, var(--verde-claro), var(--verde));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.titulo--chico {
+    font-size: 1.7rem;
+}
+
+.subtitulo {
+    margin-top: 8px;
+    font-size: .95rem;
+    color: var(--texto-suave);
+}
+
+/* ---------- Usuarios ---------- */
+.usuarios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.usuario {
+    min-height: 44px;
+    padding: 0 20px;
+    font: inherit;
+    font-weight: 600;
+    color: var(--texto);
+    background: transparent;
+    border: 1.5px solid var(--borde);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s, color .15s, box-shadow .15s;
+}
+
+.usuario:hover {
+    border-color: var(--verde);
+}
+
+.usuario[aria-pressed="true"] {
+    color: var(--negro);
+    background: var(--verde);
+    border-color: var(--verde);
+    box-shadow: 0 0 22px rgba(34, 197, 94, .45);
+}
+
+/* ---------- PIN (los guiones del boceto) ---------- */
+.pin {
+    display: flex;
+    gap: 14px;
+    margin-top: 4px;
+}
+
+.pin__lugar {
+    width: 38px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--verde-claro);
+    border-bottom: 3px solid var(--borde);
+    transition: border-color .15s;
+}
+
+.pin__lugar.lleno {
+    border-color: var(--verde);
+}
+
+.pin__lugar.lleno::after {
+    content: "\2022";
+}
+
+/* punto */
+.pin.error {
+    animation: sacudir .35s;
+}
+
+.pin.error .pin__lugar {
+    border-color: var(--error);
+}
+
+.mensaje {
+    min-height: 1.2em;
+    font-size: .9rem;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+.mensaje.error {
+    color: var(--error);
+}
+
+.mensaje.ok {
+    color: var(--verde-claro);
+}
+
+/* ---------- Teclado en rombos ---------- */
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(3, var(--lado));
+    gap: calc(var(--lado) * .55);
+    margin: 8px 0 10px;
+}
+
+.tecla {
+    width: var(--lado);
+    height: var(--lado);
+    padding: 0;
+    font: inherit;
+    color: var(--verde-claro);
+    background: linear-gradient(145deg, #11291b, #0a140e);
+    border: 1.5px solid var(--verde-oscuro);
+    border-radius: 12px;
+    cursor: pointer;
+    transform: rotate(45deg);
+    transition: transform .1s, border-color .15s, box-shadow .15s, background .15s;
+}
+
+.tecla span {
+    display: block;
+    font-size: calc(var(--lado) * .42);
+    font-weight: 700;
+    transform: rotate(-45deg);
+    /* el número queda derecho */
+}
+
+.tecla--cero {
+    grid-column: 2;
+}
+
+.tecla:hover {
+    border-color: var(--verde);
+    box-shadow: 0 0 18px rgba(34, 197, 94, .35);
+}
+
+.tecla:active {
+    transform: rotate(45deg) scale(.92);
+    background: var(--verde);
+    color: var(--negro);
+}
+
+.enlace {
+    min-height: 40px;
+    padding: 0 14px;
+    font: inherit;
+    font-size: .9rem;
+    color: var(--texto-suave);
+    background: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.enlace:hover {
+    color: var(--verde-claro);
+}
+
+/* ---------- Elegir modo ---------- */
+.modos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.modo {
+    min-height: 96px;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    font: inherit;
+    color: var(--texto);
+    background: linear-gradient(145deg, #11291b, #0a140e);
+    border: 1.5px solid var(--verde-oscuro);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform .1s, border-color .15s, box-shadow .15s;
+}
+
+.modo strong {
+    font-size: 1.15rem;
+    color: var(--verde-claro);
+}
+
+.modo small {
+    font-size: .78rem;
+    color: var(--texto-suave);
+}
+
+.modo:hover {
+    border-color: var(--verde);
+    box-shadow: 0 0 26px rgba(34, 197, 94, .28);
+}
+
+.modo:active {
+    transform: scale(.97);
+}
+
+.modo--admin {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 7px);
+    border-color: var(--verde);
+}
+
+/* ---------- Accesibilidad y animación ---------- */
+:focus-visible {
+    outline: 3px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+@keyframes sacudir {
+
+    20%,
+    60% {
+        transform: translateX(-8px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(8px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .modos {
+        grid-template-columns: 1fr;
+    }
+
+    .modo--admin {
+        width: 100%;
+    }
+}

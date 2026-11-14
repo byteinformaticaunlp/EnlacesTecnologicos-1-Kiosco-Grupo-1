@@ -1,0 +1,39 @@
+package com.enlacestecnologicos.kiosco.modelo;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name="proveedores")
+@Getter
+@Setter
+@NoArgsConstructor
+public class Proveedor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    private String nombre;
+    private String direccion;
+    private String telefono;
+
+    @OneToMany(mappedBy="proveedor")
+    private List<Producto> productos;
+
+    public Proveedor(String nombre, String direccion,String telefono,List<Producto> productos) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.productos = new LinkedList<Producto>(productos);
+    }
+
+    public void agregarProducto(Producto producto) {
+        this.productos.add(producto);
+    }
+}

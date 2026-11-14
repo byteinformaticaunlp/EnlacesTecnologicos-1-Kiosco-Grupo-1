@@ -1,19 +1,14 @@
-package EnlacesTecnologicos.Controladores;
+package com.enlacestecnologicos.kiosco.controladores;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import EnlacesTecnologicos.Modelo.Producto;
+import com.enlacestecnologicos.kiosco.modelo.Producto;
 
 @RestController
 @RequestMapping("/Productos") // endpoints productos
-public class ProductosControladores {
-
-    @GetMapping
-    public String listarProductos() {
-        return "lista de productos";
-    }
+public class ProductosController {
 
     @GetMapping
     public double precioProducto(Producto producto) {
