@@ -23,8 +23,7 @@ public class Proveedor {
     private String direccion;
     private String telefono;
 
-    @OneToMany
-    @JoinColumn(name="producto_id")
+    @OneToMany(mappedBy="proveedor")
     private List<Producto> productos;
 
     public Proveedor(String nombre, String direccion,String telefono,List<Producto> productos) {

@@ -26,7 +26,7 @@ public class DetalleVenta {
     @JoinColumn(name="producto_id")
     private List<Producto> productos;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="venta_id")
     private Venta venta;
 
