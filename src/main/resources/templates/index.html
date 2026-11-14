@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050806">
+    <title>Almacén la byteada · Ingreso</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <main class="escena">
+
+        <!-- Pantalla 1: ingreso -->
+        <section id="pantalla-ingreso" class="tarjeta" aria-labelledby="titulo">
+            <header class="cabecera">
+                <h1 id="titulo" class="titulo">Almacén <span>la byteada</span></h1>
+                <p class="subtitulo">Elegí tu usuario e ingresá tu PIN</p>
+            </header>
+
+            <div class="usuarios" role="group" aria-label="Usuarios">
+                <button type="button" class="usuario" data-usuario="david" aria-pressed="false">David</button>
+                <button type="button" class="usuario" data-usuario="clara" aria-pressed="false">Clara</button>
+                <button type="button" class="usuario" data-usuario="alann" aria-pressed="false">Alann</button>
+                <button type="button" class="usuario" data-usuario="leandro" aria-pressed="false">Leandro</button>
+            </div>
+
+            <div class="pin" id="pin" role="img" aria-label="PIN ingresado">
+                <span class="pin__lugar"></span><span class="pin__lugar"></span>
+                <span class="pin__lugar"></span><span class="pin__lugar"></span>
+            </div>
+            <p class="mensaje" id="mensaje" aria-live="polite"></p>
+
+            <div class="teclado" id="teclado">
+                <button type="button" class="tecla" data-tecla="1" aria-label="1"><span>1</span></button>
+                <button type="button" class="tecla" data-tecla="2" aria-label="2"><span>2</span></button>
+                <button type="button" class="tecla" data-tecla="3" aria-label="3"><span>3</span></button>
+                <button type="button" class="tecla" data-tecla="4" aria-label="4"><span>4</span></button>
+                <button type="button" class="tecla" data-tecla="5" aria-label="5"><span>5</span></button>
+                <button type="button" class="tecla" data-tecla="6" aria-label="6"><span>6</span></button>
+                <button type="button" class="tecla" data-tecla="7" aria-label="7"><span>7</span></button>
+                <button type="button" class="tecla" data-tecla="8" aria-label="8"><span>8</span></button>
+                <button type="button" class="tecla" data-tecla="9" aria-label="9"><span>9</span></button>
+                <button type="button" class="tecla tecla--cero" data-tecla="0" aria-label="0"><span>0</span></button>
+            </div>
+
+            <button type="button" class="enlace" id="borrar">Borrar</button>
+        </section>
+
+        <!-- Pantalla 2: elegir modo (solo los roles que tiene el usuario) -->
+        <section id="pantalla-modos" class="tarjeta" aria-labelledby="saludo" hidden>
+            <header class="cabecera">
+                <h2 id="saludo" class="titulo titulo--chico">Hola</h2>
+                <p class="subtitulo">¿Con qué modo querés trabajar?</p>
+            </header>
+            <div class="modos" id="modos"></div>
+            <p class="mensaje" id="estado-modo" aria-live="polite"></p>
+            <button type="button" class="enlace" id="volver">Cambiar de usuario</button>
+        </section>
+
+    </main>
+    <script src="login.js"></script>
+</body>
+
+</html>
